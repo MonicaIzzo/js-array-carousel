@@ -32,15 +32,18 @@ Buon lavoro e buon ponte!
 <br>
 
 - **0**
-  - 
+  - Preparo l'HTML e recupero l'elemento dal DOM
 - **1**
-  - 
+  - Creo l'arrey delle immagini e nascondo tutte le immagini tranne la prima tramite una classe d-none
 - **2**
-  **--**
-  - 
-  **--**
-  - 
-**FINE**  
+  - Genero il ciclo for sull'elemento delle frecce che mi cambiano la classe dell'elemento img .
+- **3**
+  - richiamo l'elemento event click per cambiare la classe alle immagini.
+  **4**
+  - Provo a rendere infinito il carosello cambiando le condizioni del ciclo for
+ **5**
+  - Do le stesse funzione al thumbnails.
+**FINE**   
 
 */ 
 
