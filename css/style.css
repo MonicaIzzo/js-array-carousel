@@ -26,20 +26,102 @@ box-sizing: border-box;
     border: 2px dotted red;
 }
 
-/* Text */
-
-/* Border */
-
-/* UI */
-
-/* Header */
-
-/* Main */
-
-/* Footer */
-
-
-
 /********************************************
     LAYOUT
 ********************************************/
+
+#hero {
+    position: relative;
+}
+
+#carousel {
+    height: 500px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+#carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+#carousel img.active {
+    display: block;
+}
+
+
+/* controlli */
+
+/* thumbnails */
+
+#thumbnails .img-01 {
+    height: 100px;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#thumbnails .img-02 {
+    height: 100px;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 100;
+    right: 0;
+}
+#thumbnails .img-03 {
+    height: 100px;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 200;
+    right: 0;
+}
+#thumbnails .img-04 {
+    height: 100px;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 300;
+    right: 0;
+}
+#thumbnails .img-05 {
+    height: 100px;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 400;
+    right: 0;
+}
+
+.fa-solid {
+ font-size: 40px;
+ color: white;
+ opacity: 0.3;
+ cursor: pointer;
+}
+
+.fa-solid:hover {
+    opacity: 1;
+}
+
+.fa-circle-arrow-up {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(0, -50%);
+
+}
+
+.fa-circle-arrow-down {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translate(40px, -50%);
+}
+
+
+
