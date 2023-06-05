@@ -51,57 +51,77 @@ box-sizing: border-box;
     display: block;
 }
 
-
-/* controlli */
-
 /* thumbnails */
 
-#thumbnails .img-01 {
-    height: 100px;
-    width: auto;
-    object-fit: cover;
+#thumbnails {
     position: absolute;
     top: 0;
     right: 0;
-}
-#thumbnails .img-02 {
-    height: 100px;
-    width: auto;
-    object-fit: cover;
-    position: absolute;
-    top: 100;
-    right: 0;
-}
-#thumbnails .img-03 {
-    height: 100px;
-    width: auto;
-    object-fit: cover;
-    position: absolute;
-    top: 200;
-    right: 0;
-}
-#thumbnails .img-04 {
-    height: 100px;
-    width: auto;
-    object-fit: cover;
-    position: absolute;
-    top: 300;
-    right: 0;
-}
-#thumbnails .img-05 {
-    height: 100px;
-    width: auto;
-    object-fit: cover;
-    position: absolute;
-    top: 400;
-    right: 0;
+    width: 250px;
+    height: 100%;
 }
 
+#thumbnails .thumbnails-img img {
+    height: 100px;
+    width: 250px;
+    object-fit: cover;
+    right: 0;
+}
+#thumbnails .img-01 {
+    top: 0; 
+}
+#thumbnails .img-02 {
+    top: 100px;
+}
+#thumbnails .img-03 {
+    top: 200px;
+}
+#thumbnails .img-04 {
+    top: 300px;
+}
+#thumbnails .img-05 {
+    top: 400px;
+}
+
+/* overlayer thumbnails */
+.square {
+    height: 100px;
+    width: 250px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.square:hover {
+    opacity: 0;
+}
+
+.square .square-01 {
+    top: 0;
+
+}
+.square .square-02 {
+    top: 100;
+}
+.square .square-03 {
+    top: 200;
+}
+.square .square-04 {
+    top: 300;
+}
+.square .square-05 {
+    top: 400;
+}
+
+/* controlli */
 .fa-solid {
- font-size: 40px;
+ font-size: 30px;
  color: white;
- opacity: 0.3;
+ opacity: 0.7;
  cursor: pointer;
+ z-index: 2;
 }
 
 .fa-solid:hover {
@@ -110,17 +130,17 @@ box-sizing: border-box;
 
 .fa-circle-arrow-up {
     position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translate(0, -50%);
+    top: 30px;
+    right: 125px;
+    transform: translate(50%, -50%);
 
 }
 
 .fa-circle-arrow-down {
     position: absolute;
     bottom: 0;
-    right: 50%;
-    transform: translate(40px, -50%);
+    right: 125px;
+    transform: translate(50%, -50%);
 }
 
 
