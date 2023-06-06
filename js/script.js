@@ -52,32 +52,32 @@ Buon lavoro e buon ponte!
 /*---------------------------------------
         OPERAZIONI PRELIMINARI
 ---------------------------------------*/
-// #0 Recupero gli elemento dal DOM ereo l'arrey per l'immagini
+// #0 Recupero gli elementi dal DOM
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
 const gallery = document.querySelector('.gallery');
+const thumbnailsGallery = document.getElementById('thumbnails')
 
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
 console.log(sources);
 
-let imageElements = '';
-console.log('01 imageElements è ' + imageElements)
 
 for (let i = 0; i < sources.length; i++) {
-  imageElements += `<img src="${sources[i]}" alt="hero ${i + 1}" >`
-  console.log('i è ' + i)
+  const imageElements = document.createElement('img');
+  imageElements.src = sources[i];
+  imageElements.alt = `Hero ${i + 1}`
+  gallery.appendChild(imageElements);
+
+  const thumbnails = imageElements.cloneNode();
+  thumbnailsGallery.appendChild(thumbnails);
 }
 
+const images = document.querySelectorAll('#carousel img');
+const thumbnails = document.querySelectorAll('#thumbnails img');
 
-gallery.innerHTML = imageElements;
-console.log('02 imageElements è ' + imageElements)
-// img carosello
-const images = document.querySelectorAll('#gallery img');
 let currentIndex = 0;
-console.log('currentIndex è ' + currentIndex)
 
-// assegniamo la classe active alla prima immagine.
 images[currentIndex].classList.add('active');
 
 /*---------------------------------------
@@ -88,9 +88,10 @@ images[currentIndex].classList.add('active');
 
 // btn AVANTI
 prevBtn.addEventListener('click', function(){
-if (currentIndex === 0) return;
-HeroImg[currentIndex].classList.remove('active');
-currentIndex++;
+if (!currentIndex) return;
+images[currentIndex].classList.remove('active');
+currentIndex--;
+if(currentIndex < 0) currentIndex = images.length - 1;
 images[currentIndex].classList.add('active');
 });
 
@@ -99,14 +100,12 @@ images[currentIndex].classList.add('active');
 
 // btn INDIETRO
 nextBtn.addEventListener('click', function() {
-if (currentIndex === HeroImg.length - 1) return;
-HeroImg[currentIndex].classList.remove('active');
+if (currentIndex === images.length - 1) return;
+images[currentIndex].classList.remove('active');
 currentIndex++;
-HeroImg[currentIndex].classList.add('active');
+
+if(currentIndex === images.length) currentIndex = 0
+
+images[currentIndex].classList.add('active');
 });
 
-
-
-// #4 Provo a rendere infinito il carosello cambiando le condizioni del ciclo for
-
-// #5 Assegno la stessa logica [ì] e le stesse funzioni ai thumbnails.
