@@ -62,7 +62,6 @@ const thumbnailsGallery = document.getElementById('thumbnails')
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
 console.log(sources);
 
-
 for (let i = 0; i < sources.length; i++) {
   const imageElements = document.createElement('img');
   imageElements.src = sources[i];
@@ -79,6 +78,7 @@ const thumbnails = document.querySelectorAll('#thumbnails img');
 let currentIndex = 0;
 
 images[currentIndex].classList.add('active');
+thumbnails[currentIndex].classList.add('active');
 
 /*---------------------------------------
         PROGRAMMA
@@ -88,24 +88,32 @@ images[currentIndex].classList.add('active');
 
 // btn AVANTI
 prevBtn.addEventListener('click', function(){
-if (!currentIndex) return;
 images[currentIndex].classList.remove('active');
+thumbnails[currentIndex].classList.remove('active');
 currentIndex--;
-if(currentIndex < 0) currentIndex = images.length - 1;
+console.log(currentIndex);
+if (currentIndex < 0) currentIndex = images.length - 1;
 images[currentIndex].classList.add('active');
+thumbnails[currentIndex].classList.add('active');
 });
-
-
-
 
 // btn INDIETRO
 nextBtn.addEventListener('click', function() {
-if (currentIndex === images.length - 1) return;
 images[currentIndex].classList.remove('active');
+thumbnails[currentIndex].classList.remove('active');
 currentIndex++;
-
-if(currentIndex === images.length) currentIndex = 0
-
+console.log(currentIndex);
+if (currentIndex === images.length) currentIndex = 0;
 images[currentIndex].classList.add('active');
+thumbnails[currentIndex].classList.add('active');
 });
 
+for (let i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function() {
+    images[currentIndex].classList.remove('active');
+    thumbnails[currentIndex].classList.remove('active');
+    currentIndex = i;
+    images[currentIndex].classList.add('active');
+    thumbnails[currentIndex].classList.add('active');
+  });
+}

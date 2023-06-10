@@ -27,7 +27,7 @@ Consigli del giorno:
 <br>
 
 - **0**
-  - Creo l'arrey delle immagini e nascondo tutte le immagini tranne la prima tramite una classe d-none (prepraro l'HTML a ricevere le info)
+  - Creo l'arrey delle immagini e prepraro l'HTML, nascondo tutte le immagini tranne la prima tramite una classe d-none.
 - **1**
   - Recupero gli elemento dal DOM.
 - **2**
@@ -35,7 +35,7 @@ Consigli del giorno:
 - **3**
   - Genero il ciclo for sull'elemento delle frecce per cambiare [i] .
   **4**
-  - Provo a rendere infinito il carosello cambiando le condizioni del ciclo for
+  - Provo a rendere infinito il carosello cambiando le condizioni del ciclo for.
  **5**
   - Assegno la stessa logica [ì] e le stesse funzioni ai thumbnails.
 **FINE**  
