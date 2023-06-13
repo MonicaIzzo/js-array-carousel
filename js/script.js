@@ -62,6 +62,8 @@ const thumbnailsGallery = document.getElementById('thumbnails')
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
 console.log(sources);
 
+let content = '';
+
 for (let i = 0; i < sources.length; i++) {
   const imageElements = document.createElement('img');
   imageElements.src = sources[i];
@@ -92,7 +94,7 @@ images[currentIndex].classList.remove('active');
 thumbnails[currentIndex].classList.remove('active');
 currentIndex--;
 console.log(currentIndex);
-if (currentIndex < 0) currentIndex = images.length - 1;
+if (currentIndex === -1) currentIndex = images.length - 1;
 images[currentIndex].classList.add('active');
 thumbnails[currentIndex].classList.add('active');
 });
@@ -103,13 +105,14 @@ images[currentIndex].classList.remove('active');
 thumbnails[currentIndex].classList.remove('active');
 currentIndex++;
 console.log(currentIndex);
-if (currentIndex === images.length) currentIndex = 0;
+if (currentIndex === images.length - 1) currentIndex = 0;
 images[currentIndex].classList.add('active');
 thumbnails[currentIndex].classList.add('active');
 });
 
 for (let i = 0; i < thumbnails.length; i++) {
-  thumbnails[i].addEventListener('click', function() {
+    thumbnails[i].addEventListener('click', function() {
+    if (i === currentIndex) return;  
     images[currentIndex].classList.remove('active');
     thumbnails[currentIndex].classList.remove('active');
     currentIndex = i;
