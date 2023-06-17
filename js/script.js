@@ -57,8 +57,9 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
 
-// # Recupero la gallery
+// # Recupero la gallery e i thumbnails
 const gallery = document.querySelector('.gallery');
+const thumbnailsGallery = document.getElementById('thumbnails');
 
 // # Preparo le immagini
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
@@ -66,32 +67,31 @@ console.log(sources);
 
 // # Recupero l'HTML per le immagini
 let imageElements = '';
+let thumbnailsElements = '';
 
 // # Per ogni source, creo un tag img
 for (let i = 0; i < sources.length; i++) {
   imageElements += `<img src="${sources[i]}" alt="images ${i + 1}">`;
-  
-  //!gallery.appendChild(imageElements);
-
-  //!const thumbnails = imageElements.cloneNode();
-  //!thumbnailsGallery.appendChild(thumbnails);
+// # Crea i thumbnails
+  thumbnailsElements +=  `<img src="${sources[i]}" alt="thumbnails ${i + 1}">`;
 }
 
 // # Inserisco le immagine nel DOM
 gallery.innerHTML = imageElements;
+thumbnailsGallery.innerHTML = thumbnailsElements;
 
 // # Recupero tutte le immagini
 const images = document.querySelectorAll('#carousel img');
+const thumbnails = document.querySelectorAll('#thumbnails img');
 
 // # Preparo la gestione del [currenIndex].
 let currentIndex = 0;
+let currentIndexthumbnails = currentIndex ;
 
 // # Imposto la prima immagine con la classe attiva [class='active'].
 images[currentIndex].classList.add('active');
+thumbnails[currentIndexthumbnails].classList.add('active');
 
-  //!const thumbnailsGallery = document.getElementById('thumbnails')
-  //!const thumbnails = document.querySelectorAll('#thumbnails img');
-  //!thumbnails[currentIndex].classList.add('active');
 
 /*---------------------------------------
         PROGRAMMA
@@ -102,7 +102,7 @@ nextBtn.addEventListener('click', function() {
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.remove('active');
-  //!thumbnails[currentIndex].classList.remove('active');
+  thumbnails[currentIndex].classList.remove('active');
 
   // Incremento il [currentIndex]
   currentIndex++;
@@ -112,7 +112,7 @@ nextBtn.addEventListener('click', function() {
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.add('active');
-  //!thumbnails[currentIndex].classList.add('active');
+  thumbnails[currentIndex].classList.add('active');
 });
 
 
@@ -122,7 +122,7 @@ prevBtn.addEventListener('click', function(){
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.remove('active');
-  //!thumbnails[currentIndex].classList.remove('active');
+  thumbnails[currentIndex].classList.remove('active');
 
   // Decremento il [currentIndex]
   currentIndex--;
@@ -132,7 +132,7 @@ prevBtn.addEventListener('click', function(){
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.add('active');
-  //!thumbnails[currentIndex].classList.add('active');
+  thumbnails[currentIndex].classList.add('active');
   });
 
 
