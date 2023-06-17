@@ -99,8 +99,6 @@ images[currentIndex].classList.add('active');
 
 // # btn INDIETRO
 nextBtn.addEventListener('click', function() {
-//! Se sono all'ultima immagine interrompo la funzione [currentIndex] e [4]
-if (currentIndex === images.length - 1) return;
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.remove('active');
@@ -108,6 +106,9 @@ if (currentIndex === images.length - 1) return;
 
   // Incremento il [currentIndex]
   currentIndex++;
+
+  //! Se dopo aver incrementato vado oltre
+  if (currentIndex === images.length) currentIndex = 0;
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.add('active');
@@ -118,8 +119,6 @@ if (currentIndex === images.length - 1) return;
 
 // # btn AVANTI
 prevBtn.addEventListener('click', function(){
-//! controllo se il [currentIndex] e [0]
-if (!currentIndex) return;
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.remove('active');
@@ -127,6 +126,9 @@ if (!currentIndex) return;
 
   // Decremento il [currentIndex]
   currentIndex--;
+
+    //! Se dopo aver incrementato vado oltre
+  if (currentIndex < 0) currentIndex = images.length -1;
 
   // Gestisco la classe active [class='active'] 
   images[currentIndex].classList.add('active');
