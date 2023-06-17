@@ -52,65 +52,90 @@ Buon lavoro e buon ponte!
 /*---------------------------------------
         OPERAZIONI PRELIMINARI
 ---------------------------------------*/
-// #0 Recupero gli elementi dal DOM
+// # Recupero i [BOTTONI]
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
-const gallery = document.querySelector('.gallery');
-const thumbnailsGallery = document.getElementById('thumbnails')
 
+// # Recupero la gallery
+const gallery = document.querySelector('.gallery');
+
+// # Preparo le immagini
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
 console.log(sources);
 
-let content = '';
+// # Recupero l'HTML per le immagini
+let imageElements = '';
 
+// # Per ogni source, creo un tag img
 for (let i = 0; i < sources.length; i++) {
-  const imageElements = document.createElement('img');
-  imageElements.src = sources[i];
-  imageElements.alt = `Hero ${i + 1}`
-  gallery.appendChild(imageElements);
+  imageElements += `<img src="${sources[i]}" alt="images ${i + 1}">`;
+  
+  //!gallery.appendChild(imageElements);
 
-  const thumbnails = imageElements.cloneNode();
-  thumbnailsGallery.appendChild(thumbnails);
+  //!const thumbnails = imageElements.cloneNode();
+  //!thumbnailsGallery.appendChild(thumbnails);
 }
 
-const images = document.querySelectorAll('#carousel img');
-const thumbnails = document.querySelectorAll('#thumbnails img');
+// # Inserisco le immagine nel DOM
+gallery.innerHTML = imageElements;
 
+// # Recupero tutte le immagini
+const images = document.querySelectorAll('#carousel img');
+
+// # Preparo la gestione del [currenIndex].
 let currentIndex = 0;
 
+// # Imposto la prima immagine con la classe attiva [class='active'].
 images[currentIndex].classList.add('active');
-thumbnails[currentIndex].classList.add('active');
+
+  //!const thumbnailsGallery = document.getElementById('thumbnails')
+  //!const thumbnails = document.querySelectorAll('#thumbnails img');
+  //!thumbnails[currentIndex].classList.add('active');
 
 /*---------------------------------------
         PROGRAMMA
 ---------------------------------------*/
 
-// #2 Metto in ascolto i Button "avanti" e "dietro"
-
-// btn AVANTI
-prevBtn.addEventListener('click', function(){
-images[currentIndex].classList.remove('active');
-thumbnails[currentIndex].classList.remove('active');
-currentIndex--;
-console.log(currentIndex);
-if (currentIndex === -1) currentIndex = images.length - 1;
-images[currentIndex].classList.add('active');
-thumbnails[currentIndex].classList.add('active');
-});
-
-// btn INDIETRO
+// # btn INDIETRO
 nextBtn.addEventListener('click', function() {
-images[currentIndex].classList.remove('active');
-thumbnails[currentIndex].classList.remove('active');
-currentIndex++;
-console.log(currentIndex);
-if (currentIndex === images.length - 1) currentIndex = 0;
-images[currentIndex].classList.add('active');
-thumbnails[currentIndex].classList.add('active');
+//! Se sono all'ultima immagine interrompo la funzione [currentIndex] e [4]
+if (currentIndex === images.length - 1) return;
+
+  // Gestisco la classe active [class='active'] 
+  images[currentIndex].classList.remove('active');
+  //!thumbnails[currentIndex].classList.remove('active');
+
+  // Incremento il [currentIndex]
+  currentIndex++;
+
+  // Gestisco la classe active [class='active'] 
+  images[currentIndex].classList.add('active');
+  //!thumbnails[currentIndex].classList.add('active');
 });
 
-for (let i = 0; i < thumbnails.length; i++) {
+
+
+// # btn AVANTI
+prevBtn.addEventListener('click', function(){
+//! controllo se il [currentIndex] e [0]
+if (!currentIndex) return;
+
+  // Gestisco la classe active [class='active'] 
+  images[currentIndex].classList.remove('active');
+  //!thumbnails[currentIndex].classList.remove('active');
+
+  // Decremento il [currentIndex]
+  currentIndex--;
+
+  // Gestisco la classe active [class='active'] 
+  images[currentIndex].classList.add('active');
+  //!thumbnails[currentIndex].classList.add('active');
+  });
+
+
+
+/* for (let i = 0; i < thumbnails.length; i++) {
     thumbnails[i].addEventListener('click', function() {
     if (i === currentIndex) return;  
     images[currentIndex].classList.remove('active');
@@ -120,3 +145,4 @@ for (let i = 0; i < thumbnails.length; i++) {
     thumbnails[currentIndex].classList.add('active');
   });
 }
+*/
