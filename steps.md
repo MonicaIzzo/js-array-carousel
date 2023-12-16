@@ -20,26 +20,36 @@ BONUS 2:
 Aggiungere la visualizzazione di tutte le thumbnails in basso o sulla destra dell’immagine grande attiva, (usate lo screen in allegato come ispirazione). Tutte le miniature avranno un layer di opacità scura, tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
 Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
 
-
 Consigli del giorno:
 
 <br>
 <br>
 
-- **0**
-  - Creo l'arrey delle immagini e prepraro l'HTML, nascondo tutte le immagini tranne la prima tramite una classe d-none.
-- **1**
-  - Recupero gli elemento dal DOM.
-- **2**
-  - richiamo l'elemento event click per cambiare la classe alle immagini.
-- **3**
-  - Genero il ciclo for sull'elemento delle frecce per cambiare [i] .
-  **4**
-  - Provo a rendere infinito il carosello cambiando le condizioni del ciclo for.
- **5**
-  - Assegno la stessa logica [ì] e le stesse funzioni ai thumbnails.
-**FINE**  
+**0.0** Creo l'array delle immagini.
 
+**0.1** Prepraro il layout l'HTML
 
+**0.2** Prepraro il layout CSS
 
+**0.3** Nascondo tutte le immagini tranne la prima tramite con una classe display:none.
 
+**1.0** Recupero tutti gli elemento dal DOM.
+
+**2.0** Richiamo l'elemento event click su i bottoni Prev e Next
+
+**3.0** All'interno dell'event listener genero il ciclo for sulle immagini e tramite un currentNumber [i] aggiungo o rimuovo la classe display:none alle immagini.
+
+**3.1** Genero un ciclo for sull'array delle immagini.
+
+**3.2** Tramite un currentNumber [i] aggiungo o rimuovo la classe display:none alle immagini.
+
+**4.0** Provo tramite delle condizion [if], a rendere infinito il carosello.
+
+**5.0** Preparo l'HTML e il CSS per le thumbnails.
+
+**6.0** Assegno ai thumbnails la stessa logica presente alle immagini nell'event listener dei bottoni Pre e Next [ì].
+
+**7.0 ** Provo a rendere i thumbnails cliccabili.
+**FINE**
+
+**PS:** Eseguirò l'esercizio prima con layout literar e poi con le DOM API (commentanto le seconde per non mandare in conflitto lo script)
