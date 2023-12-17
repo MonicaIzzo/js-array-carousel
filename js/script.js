@@ -53,99 +53,97 @@ Buon lavoro e buon ponte!
 /*---------------------------------------
         OPERAZIONI PRELIMINARI
 ---------------------------------------*/
-// # Recupero i [BOTTONI]
+// # Recupero dal DOM i [BOTTONI]
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
-
-// # Recupero la gallery e i thumbnails
+// # Recupero dal DOM [GALLERY]
 const gallery = document.querySelector('.gallery');
-const thumbnailsGallery = document.getElementById('thumbnails');
 
 // # Preparo le immagini
-const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
-console.log(sources);
+const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp']
 
-// # Recupero l'HTML per le immagini
-let imageElements = '';
-let thumbnailsElements = '';
+// # Preparo l'HTML per le immagini
+let imagesElements = '';
 
-// # Per ogni source, creo un tag img
-for (let i = 0; i < sources.length; i++) {
-  imageElements += `<img src="${sources[i]}" alt="images ${i + 1}">`;
-// # Crea i thumbnails
-  thumbnailsElements +=  `<img src="${sources[i]}" alt="thumbnails ${i + 1}">`;
+// # Per ogni sources preparo un tag img
+for(let i = 0; i < sources.length; i++){
+  imagesElements += `<img src="${sources[i]}" alt="Comics ${sources[i]}">`
 }
 
-// # Inserisco le immagine nel DOM
-gallery.innerHTML = imageElements;
-thumbnailsGallery.innerHTML = thumbnailsElements;
+// # Inserisco le immagini nel DOM
+gallery.innerHTML = imagesElements;
 
-// # Recupero tutte le immagini
+// # Recupero dal DOM tutte le [IMAGES] della gallery e i [THUMBNAILS]
 const images = document.querySelectorAll('#carousel img');
-const thumbnails = document.querySelectorAll('#thumbnails img');
+// // const thumbnailsGallery = document.getElementById('thumbnails');
 
-// # Preparo la gestione del [currenIndex].
+// #Preparo la gestione dell'Index
 let currentIndex = 0;
-let currentIndexthumbnails = currentIndex ;
 
-// # Imposto la prima immagine con la classe attiva [class='active'].
+// #Impostiamo  la prima immagine come attiva
 images[currentIndex].classList.add('active');
-thumbnails[currentIndexthumbnails].classList.add('active');
-
 
 /*---------------------------------------
         PROGRAMMA
 ---------------------------------------*/
 
-// # btn INDIETRO
+// # btn AVANTI -------------------------
+
 nextBtn.addEventListener('click', function() {
 
-  // Gestisco la classe active [class='active'] 
+    //! Controllo se il currentIndex è uguale alla [images.lenght] nel caso di controllo positivo setto il currentIndex a 0 per far partire il carosello alla prima immagine.
+  if (currentIndex === images.length - 1) return;
+
+  // Rimuovo la classe active [class='active'] dall'immagine corrispondente al [currentIndex]
   images[currentIndex].classList.remove('active');
-  thumbnails[currentIndex].classList.remove('active');
+  // // thumbnails[currentIndex].classList.remove('active');
 
   // Incremento il [currentIndex]
   currentIndex++;
+  console.log('il CurrentIndex corrente è ' + currentIndex);
 
-  //! Se dopo aver incrementato vado oltre
-  if (currentIndex === images.length) currentIndex = 0;
-
-  // Gestisco la classe active [class='active'] 
+  // Aggiungo la classe active [class='active'] all'immagine corrispondente al mio [currentIndex] 
   images[currentIndex].classList.add('active');
-  thumbnails[currentIndex].classList.add('active');
+  // // thumbnails[currentIndex].classList.add('active');
 });
 
 
+//  # btn INDIETRO -------------------------
 
-// # btn AVANTI
 prevBtn.addEventListener('click', function(){
 
-  // Gestisco la classe active [class='active'] 
+  //! Controllo se il currentIndex è 0 nel caso setto il currentIndex a images.lenght -1 per far partire il carosello all'ultima immagine
+  if (!currentIndex) return;
+
+  // Aggiungo la classe active [class='active'] all'immagine corrispondente al mio [currentIndex] 
   images[currentIndex].classList.remove('active');
-  thumbnails[currentIndex].classList.remove('active');
+  // // thumbnails[currentIndex].classList.remove('active');
 
   // Decremento il [currentIndex]
   currentIndex--;
+  console.log('il CurrentIndex corrente è ' + currentIndex);
 
-    //! Se dopo aver incrementato vado oltre
-  if (currentIndex < 0) currentIndex = images.length -1;
 
-  // Gestisco la classe active [class='active'] 
+
+  // Aggiungo la classe active [class='active'] all'immagine corrispondente al mio [currentIndex] 
   images[currentIndex].classList.add('active');
-  thumbnails[currentIndex].classList.add('active');
+  // // thumbnails[currentIndex].classList.add('active');
   });
 
 
 
-/* for (let i = 0; i < thumbnails.length; i++) {
-    thumbnails[i].addEventListener('click', function() {
-    if (i === currentIndex) return;  
-    images[currentIndex].classList.remove('active');
-    thumbnails[currentIndex].classList.remove('active');
-    currentIndex = i;
-    images[currentIndex].classList.add('active');
-    thumbnails[currentIndex].classList.add('active');
-  });
+/*---------------------------------------
+        Versione co DOM API
+---------------------------------------*/
+/*---------------------------------------
+// Per ogni source, creo un tag img
+
+for (let i=0; i < sources.length; i++) {
+  const imagesElements = document.createElement('img');
+  imagesElements.src = sources[i];
+  imagesElements.alt = 'Comics ${i + 1}';
+  imagesElements.title = 'Comics ${i + 1}';
+  gallery.appendChild(imagesElements);
 }
-*/
+---------------------------------------*/
