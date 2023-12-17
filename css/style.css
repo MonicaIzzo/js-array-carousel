@@ -5,18 +5,10 @@
 
 /* Reset CSS */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-} 
-
-/* Custom PROPERTIES */
-:root {
-    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-/* Generics */
-
 
 /********************************************
     UTILITIES
@@ -30,6 +22,8 @@ box-sizing: border-box;
     LAYOUT
 ********************************************/
 
+/* carousel */
+
 #carousel {
     height: 500px;
     width: 100%;
@@ -37,12 +31,12 @@ box-sizing: border-box;
     position: relative;
 }
 
-.gallery {
-        height: 500px;
-        width: 100%;
-        margin: 30px auto;
-        position: relative;
-    }
+#carousel .gallery {
+    height: 500px;
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+}
 
 #carousel .gallery img {
     width: 100%;
@@ -62,7 +56,6 @@ box-sizing: border-box;
     top: 0;
     right: 0;
     width: 250px;
-    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,6 +67,7 @@ box-sizing: border-box;
     object-fit: cover;
     filter: grayscale(1);
     cursor: pointer;
+    display: block;
 }
 
 #thumbnails img.active {
@@ -83,11 +77,11 @@ box-sizing: border-box;
 
 /* controlli */
 .fa-solid {
- font-size: 30px;
- color: white;
- opacity: 0.7;
- cursor: pointer;
- z-index: 1;
+    font-size: 30px;
+    color: white;
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .fa-solid:hover {
