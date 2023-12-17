@@ -75,6 +75,11 @@
     border: 2px solid red;
 }
 
+#thumbnails img:hover {
+    filter: grayscale(0);
+    border: 2px solid red;
+}
+
 /* controlli */
 .fa-solid {
     font-size: 30px;

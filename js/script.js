@@ -57,32 +57,36 @@ Buon lavoro e buon ponte!
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
-// # Recupero dal DOM [GALLERY]
+// # Recupero dal DOM [GALLERY] e [THUMBNAILS]
 const gallery = document.querySelector('.gallery');
+const thumbnailsGallery = document.getElementById('thumbnails');
 
 // # Preparo le immagini
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp']
 
-// # Preparo l'HTML per le immagini
-let imagesElements = '';
-
+// ? versione template literal (innerHTML)
 // # Per ogni sources preparo un tag img
-for(let i = 0; i < sources.length; i++){
+  // # Preparo l'HTML per le immagini
+  let imagesElements = '';
+
+  for(let i = 0; i < sources.length; i++){
   imagesElements += `<img src="${sources[i]}" alt="Comics ${sources[i]}">`
 }
 
 // # Inserisco le immagini nel DOM
 gallery.innerHTML = imagesElements;
+thumbnailsGallery.innerHTML = imagesElements;
 
 // # Recupero dal DOM tutte le [IMAGES] della gallery e i [THUMBNAILS]
 const images = document.querySelectorAll('#carousel img');
-// // const thumbnailsGallery = document.getElementById('thumbnails');
+const thumbnails = document.querySelectorAll('#thumbnails img');
 
 // #Preparo la gestione dell'Index
 let currentIndex = 0;
 
 // #Impostiamo  la prima immagine come attiva
 images[currentIndex].classList.add('active');
+thumbnails[currentIndex].classList.add('active');
 
 /*---------------------------------------
         PROGRAMMA
@@ -92,20 +96,21 @@ images[currentIndex].classList.add('active');
 
 nextBtn.addEventListener('click', function() {
 
-    //! Controllo se il currentIndex è uguale alla [images.lenght] nel caso di controllo positivo setto il currentIndex a 0 per far partire il carosello alla prima immagine.
-  if (currentIndex === images.length - 1) return;
-
   // Rimuovo la classe active [class='active'] dall'immagine corrispondente al [currentIndex]
   images[currentIndex].classList.remove('active');
-  // // thumbnails[currentIndex].classList.remove('active');
+  thumbnails[currentIndex].classList.remove('active');
 
   // Incremento il [currentIndex]
   currentIndex++;
   console.log('il CurrentIndex corrente è ' + currentIndex);
 
+
+  //! Controllo se il currentIndex è uguale alla [images.lenght] nel caso di controllo positivo setto il currentIndex a 0 per far partire il carosello alla prima immagine.
+  if (currentIndex === images.length) currentIndex = 0;
+
   // Aggiungo la classe active [class='active'] all'immagine corrispondente al mio [currentIndex] 
   images[currentIndex].classList.add('active');
-  // // thumbnails[currentIndex].classList.add('active');
+  thumbnails[currentIndex].classList.add('active');
 });
 
 
@@ -113,23 +118,37 @@ nextBtn.addEventListener('click', function() {
 
 prevBtn.addEventListener('click', function(){
 
-  //! Controllo se il currentIndex è 0 nel caso setto il currentIndex a images.lenght -1 per far partire il carosello all'ultima immagine
-  if (!currentIndex) return;
-
   // Aggiungo la classe active [class='active'] all'immagine corrispondente al mio [currentIndex] 
   images[currentIndex].classList.remove('active');
-  // // thumbnails[currentIndex].classList.remove('active');
+ thumbnails[currentIndex].classList.remove('active');
 
   // Decremento il [currentIndex]
   currentIndex--;
   console.log('il CurrentIndex corrente è ' + currentIndex);
 
-
+  //! Controllo se il currentIndex è 0 nel caso setto il currentIndex a images.lenght -1 per far partire il carosello all'ultima immagine
+  if (currentIndex < 0) currentIndex = images.length - 1;
 
   // Aggiungo la classe active [class='active'] all'immagine corrispondente al mio [currentIndex] 
   images[currentIndex].classList.add('active');
-  // // thumbnails[currentIndex].classList.add('active');
+  thumbnails[currentIndex].classList.add('active');
   });
+
+  // Rendiamo i thumbnail cliccabili
+  for (let i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function(){
+    images[currentIndex].classList.remove('active')
+    thumbnails[currentIndex].classList.remove('active')
+
+    // Setto il currentIndex all'indice dell'immagine corrispondente
+    currentIndex = i;
+    console.log('il CurrentIndex corrente è ' + currentIndex);
+
+    images[currentIndex].classList.add('active');
+    thumbnails[currentIndex].classList.add('active');
+
+  });
+}
 
 
 
@@ -145,5 +164,10 @@ for (let i=0; i < sources.length; i++) {
   imagesElements.alt = 'Comics ${i + 1}';
   imagesElements.title = 'Comics ${i + 1}';
   gallery.appendChild(imagesElements);
+
+  // Creare anche il thumbanail
+  const thumbanail = imageElement.cloneNode();
+  thumbnailsGallery.appendChild(thumbanail);
+
 }
 ---------------------------------------*/
